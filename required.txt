@@ -1,0 +1,7 @@
+streamlit
+ultralytics
+requests
+pandas
+pillow
+open cv-python-headless
+yolo ai model
