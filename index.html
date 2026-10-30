@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NightRoad Guardian | Safer Roads</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">▲</span><span><b>NightRoad <em>Guardian</em></b><small>Safer Roads · Smarter Tomorrow</small></span></a>
+    <div class="top-actions"><span class="status"><i></i><span id="backendStatus">Demo mode</span></span><button class="avatar" aria-label="Profile">AJ</button></div>
+  </header>
+  <aside class="sidebar">
+    <nav>
+      <a class="nav-link active" href="#home"><span>⌂</span>Home</a>
+      <a class="nav-link" href="#detect"><span>◎</span>Detect Potholes</a>
+      <a class="nav-link" href="#camera"><span>▣</span>Live Camera</a>
+      <a class="nav-link" href="#reports"><span>▤</span>Reports</a>
+      <a class="nav-link" href="#location"><span>⌖</span>Map &amp; Location</a>
+      <a class="nav-link" href="#about"><span>ⓘ</span>About</a>
+    </nav>
+    <div class="sidebar-card"><div class="mini-logo">▲</div><b>Together for<br>Safer Roads</b><small>Detect · Report · Improve</small><div class="road-lines"></div></div>
+  </aside>
+  <main id="home" class="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">ROAD SAFETY · COMPUTER VISION</p>
+        <h1>AI-Powered Pothole Detection<br>for <span>Safer Roads</span></h1>
+        <p>NightRoad Guardian helps identify road damage, capture useful evidence, and organise reports for safer journeys.</p>
+        <div class="hero-points"><span>🛡 <b>Detect</b><small>Road damage</small></span><span>⌖ <b>Report</b><small>Location aware</small></span><span>✦ <b>Safer</b><small>Roads for all</small></span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="moon"></div><div class="hill hill-one"></div><div class="hill hill-two"></div><div class="road"><div class="road-center"></div></div><div class="hero-slogan">Better Roads.<br>Brighter Future.</div></div>
+    </section>
+    <section class="action-grid" id="detect">
+      <article class="action-card"><div class="card-icon">▧</div><h3>Upload Image</h3><p>Choose a road image. Detection starts automatically.</p><label class="button primary" for="imageInput">⬆ Choose Image</label><input id="imageInput" type="file" accept="image/*" hidden><small>JPG or PNG supported</small></article>
+      <article class="action-card" id="camera"><div class="card-icon">▣</div><h3>Use Camera</h3><p>Open your device camera and capture a road image.</p><button class="button outline" id="cameraBtn">◎ Open Camera</button><small>Camera permission required</small></article>
+      <article class="action-card"><div class="card-icon">⌖</div><h3>Report Location</h3><p>Add approximate coordinates for a road report.</p><button class="button outline" id="locationBtn">⌖ Get My Location</button><small id="locationLabel">Location not set</small></article>
+      <article class="action-card"><div class="card-icon">◎</div><h3>AI Analysis</h3><p>Upload an image and view pothole detections from your AI model.</p><button class="button outline" id="analyzeBtn">↻ Run Again</button><small id="analysisHint">Auto-detects after upload</small></article>
+    </section>
+    <section class="content-grid">
+      <article class="panel preview-panel"><div class="panel-heading"><h2>▧ &nbsp; Detection Preview</h2><span class="tiny-label">IMAGE PREVIEW</span></div><div class="preview" id="preview"><div class="empty-state"><div class="empty-icon">▧</div><b>Your road image will appear here</b><p>Upload an image to get started.</p></div></div><div class="preview-footer"><span id="fileName">No image selected</span><button class="text-button" id="clearBtn">Clear image</button></div></article>
+      <article class="panel results-panel"><div class="panel-heading"><h2>◉ &nbsp; Detection Results</h2><span class="status"><i></i><span>Demo</span></span></div><div class="result-state" id="resultState"><div class="checkmark">✓</div><h3>Ready to analyse</h3><p>Choose a road image and AI detection will start automatically.</p></div><div class="stats"><div><span class="stat-icon">◎</span><b id="potholeCount">—</b><small>Potholes found</small></div><div><span class="stat-icon">⌁</span><b id="confidence">—</b><small>Confidence score</small></div><div><span class="stat-icon">▧</span><b id="resolution">—</b><small>Image resolution</small></div></div><p class="disclaimer">AI results come from your connected YOLO model. Always review detections; predictions may be incorrect.</p></article>
+    </section>
+    <section class="bottom-grid">
+      <article class="panel location-panel" id="location"><div class="panel-heading"><h2>⌖ &nbsp; Location &amp; Nearby Reports</h2><span class="tiny-label">MAP PREVIEW</span></div><div class="map-preview"><div class="map-road road-a"></div><div class="map-road road-b"></div><div class="map-road road-c"></div><div class="map-ring"></div><div class="map-pin">⌖</div><span class="map-label label-one">Panvel</span><span class="map-label label-two">New Panvel</span><span class="map-label label-three">Kharghar</span><span class="map-tag">5 km radius</span></div><div class="coords" id="coords">Coordinates not set</div></article>
+      <article class="panel reports-panel" id="reports"><div class="panel-heading"><h2>☷ &nbsp; Recent Reports</h2><button class="text-button" id="viewReports">View All →</button></div><div class="report-list" id="reportList"><div class="report-row"><span class="pin">⌖</span><div><b>Sample road report</b><small>Demo data · Not a real report</small></div><span class="pill pending">Demo</span></div><div class="report-row"><span class="pin">⌖</span><div><b>Upload an image to begin</b><small>Detection reports will appear here</small></div><span class="pill info">Ready</span></div></div><form id="reportForm" class="report-form"><input id="reportName" placeholder="Road / area name" aria-label="Road or area name"><button class="button primary" type="submit">+ Add Report</button></form></article>
+    </section>
+    <section class="about panel" id="about"><div><p class="eyebrow">OUR MISSION</p><h2>Make every road safer.</h2><p>This is the first frontend prototype for NightRoad Guardian. Upload a road image to send it to the connected Python API and pothole-trained computer-vision model.</p></div><div class="about-badge">NIGHTROAD<br><strong>GUARDIAN</strong><small>Prototype v1.0</small></div></section>
+    <footer><a class="footer-brand" href="#home">▲ NightRoad <em>Guardian</em></a><span>Safer Roads · Smarter Tomorrow</span><span>Built for road safety awareness</span></footer>
+  </main>
+  <dialog id="cameraDialog"><div class="dialog-head"><h2>Live Camera</h2><button id="closeCamera" class="icon-button" aria-label="Close camera">×</button></div><video id="cameraVideo" autoplay playsinline></video><p id="cameraMessage">Allow camera access to capture a frame.</p><div class="dialog-actions"><button class="button outline" id="stopCamera">Stop Camera</button><button class="button primary" id="captureBtn">Capture Image</button></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
